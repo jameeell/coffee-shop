@@ -1,0 +1,80 @@
+<section class="regervation_part section_padding" style="margin-top: 12%;">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-5">
+                <div class="section_tittle">
+                    <p>SIGNUP</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="regervation_part_iner">
+
+                    <form [formGroup]='signupForm'>
+                        <div class="form-group">
+                            <div class="form-group col-md-6">
+                                <input type="text" class="form-control" formControlName='name' placeholder="Name">
+                            </div>
+                            <div *ngIf="(signupForm.controls['name'].invalid) && 
+                    (signupForm.controls['name'].dirty || signupForm.controls['name'].touched)">
+                                <div *ngIf="(signupForm.controls['name'].errors.minlength)" class="text-danger">
+                                    First name must have at least 3 characters !!
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control" formControlName='email' placeholder="Email">
+                            </div>
+                            <div *ngIf="signupForm.controls['email'].invalid && 
+                            (signupForm.controls['email'].dirty || signupForm.controls['email'].touched)">
+                                <div *ngIf="signupForm.controls['email'].errors.email" class="text-danger">
+                                    Email Invalid !!
+                                </div>
+                                <div *ngIf="signupForm.controls['email'].errors.required" class="text-danger">
+                                    Email is required!!
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" formControlName='pwd' placeholder="Password">
+                            </div>
+                            <div *ngIf="signupForm.controls['pwd'].invalid && 
+                            (signupForm.controls['pwd'].dirty || signupForm.controls['pwd'].touched)">
+                                <div *ngIf="signupForm.controls['pwd'].errors.minlength" class="text-danger">
+                                    First name must have at least 2 characters !!
+                                </div>
+                                <div *ngIf="signupForm.controls['pwd'].errors.maxlength" class="text-danger">
+                                    First name must have at most 6 characters !!
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" formControlName='confirmPwd'
+                                    placeholder="Confirm Password">
+                            </div>
+                            <div *ngIf="signupForm.controls['confirmPwd'].invalid && 
+                            (signupForm.controls['confirmPwd'].dirty || signupForm.controls['confirmPwd'].touched)">
+                                <div *ngIf="signupForm.controls['confirmPwd'].errors.mustMatch" class="text-danger">
+                                    Confirm Pwd must match PWD
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="number" class="form-control" formControlName='tel' placeholder="Tel">
+                            </div>
+                            <div class="form-group">
+                                <button (click)='filePicker.click()' class="btn btn-success">Sélectionner image</button>
+                                <input style="visibility: hidden;" type="file" class="form-control" #filePicker
+                                    (change)='onImageSelected($event)'>
+                                <img [src]="imagePreview" *ngIf="imagePreview" height="100px" width="100px">
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <button type="submit" [disabled]='signupForm.invalid' (click)='signup(signupForm.value)'
+                                class="btn btn-primary py-3 px-5">Sign up</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

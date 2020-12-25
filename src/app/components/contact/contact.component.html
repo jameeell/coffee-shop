@@ -1,0 +1,42 @@
+<section class="regervation_part section_padding" style="margin-top: 12%;">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-5">
+                <div class="section_tittle">
+                    <p>CONTACT</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="regervation_part_iner">
+
+                    <form #contactForm="ngForm" (ngSubmit)='addContact()'>
+                        <div class="form-group">
+                            <div class="form-group col-md-6">
+                                <input type="text" class="form-control" [(ngModel)]='contact.name' [ngModelOptions]="{standalone: true}" placeholder="Name*">                            </div>
+                            
+                            <div class="form-group">
+                                <input type="email" class="form-control"  [(ngModel)]='contact.email' [ngModelOptions]="{standalone: true}" placeholder="Email">
+                            </div>
+                           
+                            <div class="form-group">
+                                <input type="tel" class="form-control" [(ngModel)]='contact.tel' [ngModelOptions]="{standalone: true}" placeholder="Tel*">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" [(ngModel)]='contact.subject' [ngModelOptions]="{standalone: true}" placeholder="Subject">
+                            </div>
+                            
+                        </div>
+
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary py-3 px-5" >Contact Us</button>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

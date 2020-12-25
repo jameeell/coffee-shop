@@ -1,0 +1,165 @@
+<section class="breadcrumb breadcrumb_bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb_iner text-center">
+                    <div class="breadcrumb_iner_item">
+                        <h2>Admin</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div style="margin: 5%;">
+    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
+                aria-controls="pills-home" aria-selected="false">Personnels</a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link active" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
+                aria-controls="pills-profile" aria-selected="true">Menu</a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="pills-reserv-tab" data-toggle="pill" href="#pills-reserv" role="tab"
+                aria-controls="pills-reserv" aria-selected="false">Reservation</a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="pills-user-tab" data-toggle="pill" href="#pills-user" role="tab"
+                aria-controls="pills-profile" aria-selected="false">user</a>
+        </li>
+    </ul>
+    <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">IDper</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Images</th>
+                        <th scope="col">Role</th>
+                        <th scope="col">Tel</th>
+                        <th>action</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor='let p of allPersonnels'>
+                        <th scope="row">{{p._id}}</th>
+                        <th>{{p.name}}</th>
+                        <th> <img [src]="p.image" width="150px" height="150px"></th>
+                        <th>{{p.role}}</th>
+                        <th>{{p.tel}}</th>
+                        <th>
+                            <button class="btn btn-outline-success" (click)='displayPersonnels(p._id)'>Display</button>
+                            <button class="btn btn-outline-info" (click)='editPersonnels(p._id)'>Edit</button>
+                            <button class="btn btn-outline-danger" (click)='deletePersonnels(p._id)'>Delete</button>
+                        </th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">IDmenu</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Quantities</th>
+                        <th scope="col">Image</th>
+                        <th>action</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor='let m of allMenus'>
+                        <th scope="row">{{m._id}}</th>
+                        <th>{{m.name}} ></th>
+                        <th>{{m.price}} ></th>
+                        <th>{{m.type}} ></th>
+                        <th>{{m.quantities}} ></th>
+                        <th><img [src]="m.image" height="50px" width="50px" alt=""></th>
+                        <th>
+                            <button class="btn btn-outline-success" (click)='displayMenus(m._id)'>Display</button>
+                            <button class="btn btn-outline-info" (click)='editMenus(m._id)'>Edit</button>
+                            <button class="btn btn-outline-danger" (click)='deleteMenus(m._id)'>Delete</button>
+                        </th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="tab-pane fade" id="pills-reserv" role="tabpanel" aria-labelledby="pills-reserv-tab">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">IDreserv</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Place</th>
+                        <th scope="col">NbPersonnes</th>
+                        <th scope="col">Tel</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Time</th>
+                        <th scope="col">Note</th>
+                        <th>action</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor='let r of allReservations'>
+                        <th scope="row">{{r._id}}</th>
+                        <th>{{r.name}} ></th>
+                        <th>{{r.place}} ></th>
+                        <th>{{r.nbPersonnes}} ></th>
+                        <th>{{r.tel}} ></th>
+                        <th>{{r.date}} ></th>
+                        <th>{{r.time}} ></th>
+                        <th>{{r.note}} ></th>
+
+                        <th>
+                            <button class="btn btn-outline-success" (click)='displayReservations(r._id)'>Display</button>
+                            <button class="btn btn-outline-info" (click)='editReservations(r._id)'>Edit</button>
+                            <button class="btn btn-outline-danger" (click)='deleteReservations(r._id)'>Delete</button>
+                        </th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="tab-pane fade" id="pills-user" role="tabpanel" aria-labelledby="pills-user-tab">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">IDuser</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">email</th>
+                        <th scope="col">Tel</th>
+                        <th scope="col">role</th>
+                        <th>action</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor='let u of allUsers'>
+                        <th scope="row">{{u._id}}</th>
+                        <th>{{u.name}} ></th>
+                        <th>{{u.email}} ></th>
+                        <th>{{u.tel}} ></th>
+                        <th>{{u.role}} ></th>
+
+                        <th>
+                            <button class="btn btn-outline-danger" (click)='deleteUsers(u._id)'>Delete</button>
+                        </th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+                    
+    
+
+    </div>
+</div>
